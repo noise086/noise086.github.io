@@ -15,7 +15,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-console.log('Hello');
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
   var menuTop = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.header__navigation').offset().top; // запоминаем положение меню
 
@@ -41,6 +40,14 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
       }
     }
   });
+});
+var hamb = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.hamburger'),
+    menu = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.header__menu'),
+    item = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.header__item');
+hamb.on('click', function () {
+  hamb.toggleClass('hamburger_active');
+  menu.toggleClass('header__menu_active');
+  item.toggleClass('header__item_active');
 });
 
 /***/ }),
