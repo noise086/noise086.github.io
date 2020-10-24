@@ -20,24 +20,16 @@ __webpack_require__.r(__webpack_exports__);
 
 jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).ready(function () {
   jquery__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-    var menuTop = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').offset().top; // запоминаем положение меню
-
+    var menuTop = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').offset().top;
     jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scroll(function () {
-      // отслеживаем событие прокрутки страницы
       if (jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scrollTop() > menuTop) {
-        // если прокрутка дошла до меню
         if (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('position') != 'fixed') {
-          // проверяем, если меню еще не зафиксировано
-          jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('position', 'fixed'); // задаем блоку меню свойство position = fixed
-
-          jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('top', '0'); // положение в самом верху
-
-          jquery__WEBPACK_IMPORTED_MODULE_1___default()('.content').css('margin-top', '80px'); // делаем отступ, чтобы контент не "скакал" в момент фиксации меню
+          jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('position', 'fixed');
+          jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('top', '0');
+          jquery__WEBPACK_IMPORTED_MODULE_1___default()('.content').css('margin-top', '80px');
         }
       } else {
-        // прокрутка страницы обратно вверх достигла место "перехода" меню
         if (jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('position') == 'fixed') {
-          // если меню зафиксировано
           jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('position', '');
           jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__navigation').css('top', '');
           jquery__WEBPACK_IMPORTED_MODULE_1___default()('.content').css('margin-top', '');
