@@ -37,16 +37,16 @@ jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).ready(function () {
       }
     });
   });
-  var hamb = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.hamburger'),
-      menu = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__menu'),
-      item = jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__item');
-  hamb.on('click', function () {
-    hamb.toggleClass('hamburger_active');
-    menu.toggleClass('header__menu_active');
-    setTimeout(function () {
-      item.toggleClass('header__item_active');
-    }, 100);
-  });
+
+  function activeMenu() {
+    jquery__WEBPACK_IMPORTED_MODULE_1___default()('.hamburger').on('click', function () {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('.hamburger').toggleClass('hamburger_active');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__menu').toggleClass('header__menu_active');
+      setTimeout(function () {
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()('.header__item').toggleClass('header__item_active');
+      }, 100);
+    });
+  }
 
   function scroll(id) {
     jquery__WEBPACK_IMPORTED_MODULE_1___default()(function () {
@@ -68,6 +68,7 @@ jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).ready(function () {
       jquery__WEBPACK_IMPORTED_MODULE_1___default()('.pageup').fadeOut();
     }
   });
+  activeMenu();
   scroll('#dushevye');
   scroll('#header');
 });
