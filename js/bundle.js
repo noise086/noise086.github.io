@@ -62,15 +62,18 @@ jquery__WEBPACK_IMPORTED_MODULE_1___default()(document).ready(function () {
   }
 
   jquery__WEBPACK_IMPORTED_MODULE_1___default()(window).scroll(function () {
-    if (jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).scrollTop() > 1600) {
-      jquery__WEBPACK_IMPORTED_MODULE_1___default()('.pageup').fadeIn();
+    if (jquery__WEBPACK_IMPORTED_MODULE_1___default()(this).scrollTop() > 1200) {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('.scrollUp').fadeIn();
     } else {
-      jquery__WEBPACK_IMPORTED_MODULE_1___default()('.pageup').fadeOut();
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('.scrollUp').fadeOut();
     }
   });
   activeMenu();
   scroll('#dushevye');
   scroll('#header');
+  jquery__WEBPACK_IMPORTED_MODULE_1___default()('.carousel').carousel({
+    interval: 5000
+  });
 });
 
 /***/ }),
