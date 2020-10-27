@@ -1,5 +1,5 @@
-import $ from 'jquery';
-
+// import 'jquery';
+import progressScroll from './progressScroll';
 
 $(document).ready( function(){
 	$(function() {
@@ -44,15 +44,23 @@ $(document).ready( function(){
 
 
 	$(window).scroll(function() {
-		if ($(this).scrollTop() > 1600) {
-			$('.pageup').fadeIn();
+		if ($(this).scrollTop() > 1200) {
+			$('.scrollUp').fadeIn();
 		} else {
-			$('.pageup').fadeOut();
+			$('.scrollUp').fadeOut();
 		}
 	}); 
 	
 	activeMenu();
 	scroll('#dushevye');
 	scroll('#header');
+
+	$('.carousel').carousel({
+		interval: 5000
+	  });
+
+
+
+	progressScroll();
 
 });
