@@ -1,83 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/progressScroll.js":
-/*!**********************************!*\
-  !*** ./src/js/progressScroll.js ***!
-  \**********************************/
-/*! namespace exports */
-/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
-/*! other exports [not provided] [no usage info] */
-/*! runtime requirements: __webpack_exports__, __webpack_require__.r, __webpack_require__.d, __webpack_require__.* */
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
-/* harmony export */ });
-function progressScroll() {
-  var ProgressScroll = function () {
-    var s;
-    return {
-      settings: function settings() {
-        return {
-          top: $(".progress-top"),
-          right: $(".progress-right"),
-          bottom: $(".progress-bottom"),
-          left: $(".progress-left"),
-          windowHeight: $(window).height(),
-          windowWidth: $(window).width(),
-          scrollHeight: $(document).height() - $(window).height(),
-          progressTotal: $(window).height() * 2 + $(window).width() * 2,
-          scrollPosition: $(document).scrollTop()
-        };
-      },
-      init: function init() {
-        s = this.settings();
-        this.bindEvents();
-      },
-      bindEvents: function bindEvents() {
-        $(window).on("scroll", this.onScroll);
-        $(window).on("resize", this.onResize);
-        this.progress();
-      },
-      onScroll: function onScroll() {
-        s.scrollPosition = $(document).scrollTop();
-        ProgressScroll.requestTick();
-      },
-      onResize: function onResize() {
-        s.windowHeight = $(window).height();
-        s.windowWidth = $(window).width();
-        s.scrollHeight = $(document).height() - s.windowHeight;
-        s.progressTotal = s.windowHeight * 2 + s.windowWidth * 2;
-        ProgressScroll.requestTick();
-      },
-      requestTick: function requestTick() {
-        requestAnimationFrame(this.progress);
-      },
-      progress: function progress() {
-        var percentage = s.scrollPosition / s.scrollHeight;
-        var width = s.windowWidth / s.progressTotal;
-        var height = s.windowHeight / s.progressTotal;
-        s.top.css("width", "".concat(percentage / width * 100, "%"));
-        s.right.css("height", "".concat((percentage - width) / height * 100, "%"));
-        s.bottom.css("width", "".concat((percentage - width - height) / width * 100, "%"));
-        s.left.css("height", "".concat((percentage - width - height - width) / height * 100, "%"));
-      }
-    };
-  }(); // Init
-
-
-  $(function () {
-    ProgressScroll.init();
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (progressScroll);
-
-/***/ }),
-
 /***/ "./src/js/script.js":
 /*!**************************!*\
   !*** ./src/js/script.js ***!
@@ -91,10 +14,9 @@ function progressScroll() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_timers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.timers */ "./node_modules/core-js/modules/web.timers.js");
 /* harmony import */ var core_js_modules_web_timers__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_timers__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _progressScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./progressScroll */ "./src/js/progressScroll.js");
 
 // import 'jquery';
-
+// import progressScroll from './progressScroll';
 $(document).ready(function () {
   $(function () {
     var menuTop = $('.header__navigation').offset().top;
@@ -116,9 +38,10 @@ $(document).ready(function () {
   });
 
   function activeMenu() {
-    $('.hamburger').on('click', function () {
+    $('.header__navigation').on('click', function () {
       $('.hamburger').toggleClass('hamburger_active');
-      $('.header__menu').toggleClass('header__menu_active');
+      $('.header__menu').toggleClass('header__menu_active'); // $('body').toggleClass('modal-open');
+
       setTimeout(function () {
         $('.header__item').toggleClass('header__item_active');
       }, 100);
@@ -146,12 +69,15 @@ $(document).ready(function () {
     }
   });
   activeMenu();
-  scroll('#dushevye');
   scroll('#header');
+  scroll('#dushevye');
+  scroll('#partitions');
+  scroll('#doors');
+  scroll('#sliding');
+  scroll('#curtains');
   $('.carousel').carousel({
     interval: 5000
-  });
-  (0,_progressScroll__WEBPACK_IMPORTED_MODULE_1__.default)();
+  }); // progressScroll();
 });
 
 /***/ }),
@@ -162,6 +88,7 @@ $(document).ready(function () {
   \*****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
@@ -181,6 +108,7 @@ module.exports = function (it) {
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 25:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
@@ -225,6 +153,7 @@ module.exports = {
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module) => {
 
 var toString = {}.toString;
@@ -242,6 +171,7 @@ module.exports = function (it) {
   \***********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
@@ -268,6 +198,7 @@ module.exports = function (target, source) {
   \**************************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 5:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
@@ -290,6 +221,7 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
   \**********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
 module.exports = function (bitmap, value) {
@@ -310,6 +242,7 @@ module.exports = function (bitmap, value) {
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -328,6 +261,7 @@ module.exports = !fails(function () {
   \*******************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 8:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
@@ -350,6 +284,7 @@ module.exports = function (it) {
   \*************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
@@ -365,6 +300,7 @@ module.exports = getBuiltIn('navigator', 'userAgent') || '';
   \*********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 2:0-14 */
 /***/ ((module) => {
 
 // IE8- don't enum bug keys
@@ -387,6 +323,7 @@ module.exports = [
   \**************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
+/*! CommonJS bailout: module.exports is used directly at 23:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
@@ -453,6 +390,7 @@ module.exports = function (options, source) {
   \*************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
 module.exports = function (exec) {
@@ -472,6 +410,7 @@ module.exports = function (exec) {
   \********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 8:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
@@ -495,6 +434,7 @@ module.exports = function (namespace, method) {
   \**************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__.g, __webpack_require__.* */
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var check = function (it) {
@@ -520,6 +460,7 @@ module.exports =
   \***********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module) => {
 
 var hasOwnProperty = {}.hasOwnProperty;
@@ -537,6 +478,7 @@ module.exports = function (it, key) {
   \*******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
 module.exports = {};
@@ -550,6 +492,7 @@ module.exports = {};
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
@@ -572,6 +515,7 @@ module.exports = !DESCRIPTORS && !fails(function () {
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 7:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -597,6 +541,7 @@ module.exports = fails(function () {
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 12:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
@@ -621,6 +566,7 @@ module.exports = store.inspectSource;
   \**********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 55:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/core-js/internals/native-weak-map.js");
@@ -694,6 +640,7 @@ module.exports = {
   \*****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 21:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
@@ -727,6 +674,7 @@ module.exports = isForced;
   \*****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
 module.exports = function (it) {
@@ -742,6 +690,7 @@ module.exports = function (it) {
   \***************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 1:0-14 */
 /***/ ((module) => {
 
 module.exports = false;
@@ -755,6 +704,7 @@ module.exports = false;
   \***********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
@@ -880,6 +830,7 @@ exports.f = Object.getOwnPropertySymbols;
   \****************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: __webpack_require__, module */
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
@@ -937,6 +888,7 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
   \****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 7:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
@@ -960,6 +912,7 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
   \************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
@@ -975,6 +928,7 @@ module.exports = global;
   \****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 12:1-15 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
@@ -1021,6 +975,7 @@ var TEMPLATE = String(String).split('String');
   \********************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 3:0-14 */
 /***/ ((module) => {
 
 // `RequireObjectCoercible` abstract operation
@@ -1039,6 +994,7 @@ module.exports = function (it) {
   \******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
@@ -1061,6 +1017,7 @@ module.exports = function (key, value) {
   \******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
@@ -1081,6 +1038,7 @@ module.exports = function (key) {
   \********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 7:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
@@ -1100,6 +1058,7 @@ module.exports = store;
   \**************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 4:1-15 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
@@ -1122,6 +1081,7 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules
   \*************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 9:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
@@ -1146,6 +1106,7 @@ module.exports = function (index, length) {
   \*************************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 5:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // toObject with fallback for non-array-like ES3 strings
@@ -1165,6 +1126,7 @@ module.exports = function (it) {
   \******************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 6:0-14 */
 /***/ ((module) => {
 
 var ceil = Math.ceil;
@@ -1185,6 +1147,7 @@ module.exports = function (argument) {
   \*****************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 7:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
@@ -1206,6 +1169,7 @@ module.exports = function (argument) {
   \********************************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module, __webpack_require__ */
+/*! CommonJS bailout: module.exports is used directly at 7:0-14 */
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
@@ -1232,6 +1196,7 @@ module.exports = function (input, PREFERRED_STRING) {
   \***********************************************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements: module */
+/*! CommonJS bailout: module.exports is used directly at 4:0-14 */
 /***/ ((module) => {
 
 var id = 0;
