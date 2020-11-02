@@ -75,6 +75,9 @@ $(document).ready(function () {
   scroll('#doors');
   scroll('#sliding');
   scroll('#curtains');
+  scroll('#interest');
+  scroll('#fitings');
+  scroll('#footer');
   $('.carousel').carousel({
     interval: 5000
   }); // progressScroll();
